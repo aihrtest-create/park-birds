@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Парк Сказка — Зона Птиц</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root {
+    --sky-100: #E8F4FD;
+    --sky-200: #C5E4F9;
+    --sky-300: #8DC8F0;
+    --sky-400: #4BA8E8;
+    --sky-500: #2196F3;
+    --sky-600: #1976D2;
+    --sky-700: #1565C0;
+    --pink-400: #F06292;
+    --pink-500: #EC407A;
+    --yellow-400: #FFD54F;
+    --yellow-500: #FFC107;
+    --green-400: #66BB6A;
+    --white: #FFFFFF;
+    --dark: #1A2A3A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #f0f4f8;
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVIGATION TABS ===== */
+  .tab-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    background: var(--white);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    border-bottom: 3px solid var(--sky-200);
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 18px 16px;
+    border: none;
+    background: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--sky-600);
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--pink-500);
+    border-radius: 3px;
+    transition: width 0.3s;
+  }
+  .tab-btn.active {
+    color: var(--pink-500);
+    background: var(--sky-100);
+  }
+  .tab-btn.active::after { width: 60%; }
+  .tab-btn:hover { background: var(--sky-100); }
+  .tab-btn span { display: block; font-size: 11px; color: #999; margin-top: 2px; font-family: 'Nunito'; font-weight: 400; }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ===== SIGN DESIGN (PRINT) ===== */
+  .sign-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 70px);
+    align-items: center;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f5e6f0 100%);
+  }
+
+  .sign-card {
+    width: 420px;
+    height: 600px;
+    background: linear-gradient(180deg, var(--sky-500) 0%, var(--sky-700) 100%);
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+      0 20px 60px rgba(21, 101, 192, 0.3),
+      0 4px 12px rgba(0,0,0,0.1),
+      inset 0 1px 0 rgba(255,255,255,0.2);
+    animation: signFloat 4s ease-in-out infinite;
+  }
+
+  @keyframes signFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Wave decoration */
+  .sign-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    opacity: 0.1;
+  }
+  .sign-wave svg { width: 100%; height: 100%; }
+
+  /* Decorative circles */
+  .sign-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .sign-card::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .sign-header {
+    padding: 20px 24px 8px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sign-logo {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .sign-zone-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 4px 16px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--yellow-400);
+    margin-top: 4px;
+  }
+
+  .sign-photo-area {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    margin: 12px 0 0;
+  }
+
+  .sign-photo-frame {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--yellow-400), var(--pink-400));
+    padding: 5px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    position: relative;
+  }
+
+  .sign-photo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  .sign-photo-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  /* Sparkles around photo */
+  .sparkle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    animation: sparkleAnim 2s ease-in-out infinite;
+  }
+  .sparkle::before, .sparkle::after {
+    content: '';
+    position: absolute;
+    background: var(--yellow-400);
+  }
+  .sparkle::before {
+    width: 2px; height: 12px;
+    left: 5px; top: 0;
+    border-radius: 2px;
+  }
+  .sparkle::after {
+    width: 12px; height: 2px;
+    top: 5px; left: 0;
+    border-radius: 2px;
+  }
+  .sparkle:nth-child(1) { top: -5px; right: 15px; animation-delay: 0s; }
+  .sparkle:nth-child(2) { bottom: 20px; left: 5px; animation-delay: 0.5s; }
+  .sparkle:nth-child(3) { top: 40px; left: -8px; animation-delay: 1s; }
+
+  @keyframes sparkleAnim {
+    0%, 100% { opacity: 0.3; transform: scale(0.6) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(45deg); }
+  }
+
+  .sign-name {
+    text-align: center;
+    padding: 16px 24px 4px;
+    position: relative;
+    z-index: 2;
+  }
+  .sign-name h2 {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .sign-name-latin {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  .sign-cta {
+    text-align: center;
+    padding: 12px 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .sign-cta-bubble {
+    display: inline-block;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 10px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    position: relative;
+  }
+  .sign-cta-bubble::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--white);
+  }
+  .sign-cta-text {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--sky-700);
+  }
+  .sign-cta-text .scan-icon { margin-right: 4px; }
+
+  .sign-qr {
+    text-align: center;
+    padding: 12px 24px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .qr-box {
+    display: inline-block;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .qr-box canvas, .qr-box img {
+    border-radius: 8px;
+    display: block;
+  }
+
+  .qr-url-input-wrap {
+    margin-top: 20px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .qr-url-input {
+    padding: 10px 16px;
+    border: 2px solid var(--sky-300);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    width: 300px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .qr-url-input:focus { border-color: var(--pink-500); }
+  .qr-url-btn {
+    padding: 10px 20px;
+    background: var(--pink-500);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .qr-url-btn:hover { background: var(--pink-400); }
+
+  .sign-footer {
+    text-align: center;
+    padding: 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .sign-footer span {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ===== MOBILE WEB PAGE ===== */
+  .mobile-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 70px);
+    align-items: flex-start;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f0e8fe 100%);
+  }
+
+  .phone-frame {
+    width: 390px;
+    min-height: 750px;
+    background: var(--white);
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.15),
+      0 0 0 8px #222,
+      0 0 0 10px #444;
+    position: relative;
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 28px;
+    background: #222;
+    border-radius: 0 0 20px 20px;
+    z-index: 10;
+  }
+
+  .mobile-page {
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  /* Hero section */
+  .hero {
+    background: linear-gradient(180deg, var(--sky-500) 0%, var(--sky-600) 60%, var(--sky-700) 100%);
+    padding: 50px 24px 30px;
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+  }
+
+  .hero-deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .hero-deco-circle:nth-child(1) { width: 200px; height: 200px; top: -60px; right: -60px; }
+  .hero-deco-circle:nth-child(2) { width: 120px; height: 120px; bottom: 40px; left: -40px; }
+  .hero-deco-circle:nth-child(3) { width: 80px; height: 80px; top: 80px; left: 20px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--yellow-400);
+    font-weight: 700;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+    animation: fadeSlideDown 0.6s ease-out;
+  }
+
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-photo {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--yellow-400), var(--pink-400));
+    padding: 4px;
+    position: relative;
+    z-index: 2;
+    animation: photoAppear 0.8s ease-out 0.2s both;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  @keyframes photoAppear {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .hero-photo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .hero-photo-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  .hero h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--white);
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+    animation: fadeSlideDown 0.6s ease-out 0.4s both;
+  }
+
+  .hero-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    margin-top: 4px;
+    position: relative;
+    z-index: 2;
+    animation: fadeSlideDown 0.6s ease-out 0.5s both;
+  }
+
+  /* Quick facts strip */
+  .quick-facts {
+    display: flex;
+    justify-content: space-around;
+    background: var(--white);
+    margin: -20px 16px 0;
+    border-radius: 16px;
+    padding: 16px 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 3;
+    animation: fadeSlideDown 0.6s ease-out 0.6s both;
+  }
+
+  .fact-item {
+    text-align: center;
+    flex: 1;
+  }
+  .fact-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  .fact-value {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--sky-700);
+  }
+  .fact-label {
+    font-size: 10px;
+    color: #999;
+    margin-top: 1px;
+  }
+  .fact-item + .fact-item {
+    border-left: 1px solid #eee;
+  }
+
+  /* Content sections */
+  .content-section {
+    padding: 24px 20px;
+  }
+
+  .section-title {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--sky-700);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .info-card {
+    background: var(--sky-100);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--sky-400);
+    line-height: 1.6;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .fun-facts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .fun-fact {
+    background: linear-gradient(135deg, var(--sky-100), #f0e8ff);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .fun-fact:hover { transform: scale(1.03); }
+  .fun-fact-emoji { font-size: 28px; margin-bottom: 6px; }
+  .fun-fact-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+
+  /* Safety rules */
+  .safety-section {
+    background: linear-gradient(135deg, #FFF9E6, #FFF3CC);
+    margin: 0 20px;
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid var(--yellow-400);
+  }
+
+  .safety-title {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #F57C00;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .safety-rule {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+  }
+  .safety-rule-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--yellow-400);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    margin-top: 1px;
+  }
+
+  /* CTA bottom */
+  .cta-section {
+    padding: 24px 20px 32px;
+    text-align: center;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--pink-500), var(--pink-400));
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 32px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(236,64,122,0.4);
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(236,64,122,0.5);
+  }
+
+  .park-footer {
+    text-align: center;
+    padding: 0 20px 24px;
+  }
+  .park-footer-logo {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--sky-600);
+  }
+  .park-footer-text {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 4px;
+  }
+
+  /* ===== LABELS ===== */
+  .prototype-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--pink-500);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 20;
+  }
+
+  /* Description panels */
+  .desc-panel {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    text-align: center;
+  }
+  .desc-panel h3 {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--sky-700);
+    margin-bottom: 8px;
+  }
+  .desc-panel p {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;
+  }
+
+  /* Audio player */
+  .audio-player {
+    background: linear-gradient(135deg, var(--sky-100), #E8F5E9);
+    border-radius: 16px;
+    padding: 16px;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .audio-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--sky-500);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(33,150,243,0.3);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .audio-btn:hover { background: var(--sky-600); transform: scale(1.05); }
+  .audio-info { flex: 1; }
+  .audio-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--sky-700);
+  }
+  .audio-desc {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+  }
+  .audio-wave {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    height: 20px;
+    margin-top: 6px;
+  }
+  .audio-wave span {
+    display: block;
+    width: 3px;
+    background: var(--sky-400);
+    border-radius: 2px;
+    animation: wave 1.2s ease-in-out infinite;
+  }
+  .audio-wave span:nth-child(1) { height: 6px; animation-delay: 0s; }
+  .audio-wave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
+  .audio-wave span:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+  .audio-wave span:nth-child(4) { height: 16px; animation-delay: 0.3s; }
+  .audio-wave span:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+  .audio-wave span:nth-child(6) { height: 14px; animation-delay: 0.5s; }
+  .audio-wave span:nth-child(7) { height: 7px; animation-delay: 0.6s; }
+  .audio-wave span:nth-child(8) { height: 11px; animation-delay: 0.7s; }
+
+  @keyframes wave {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.4); }
+  }
+
+  /* Gallery placeholder */
+  .gallery-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 0 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .gallery-item {
+    width: 100px;
+    height: 80px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    overflow: hidden;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .gallery-item:nth-child(1) { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+  .gallery-item:nth-child(3) { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #FCE4EC, #F8BBD0); }
+
+  /* Responsive */
+  @media (max-width: 460px) {
+    .sign-card { width: 340px; height: 500px; }
+    .sign-photo-frame { width: 180px; height: 180px; }
+    .ostrich-emoji { font-size: 80px; }
+    .sign-name h2 { font-size: 26px; }
+    .phone-frame { width: 100%; border-radius: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Tab Navigation -->
+<nav class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('sign')">
+    🪧 Табличка
+    <span>макет для печати</span>
+  </button>
+  <button class="tab-btn" onclick="switchTab('web')">
+    📱 Веб-страница
+    <span>после сканирования QR</span>
+  </button>
+</nav>
+
+<!-- ===== TAB 1: SIGN DESIGN ===== -->
+<div id="tab-sign" class="tab-content active">
+  <div class="sign-wrapper">
+    <div style="text-align:center;">
+      <div class="sign-card" style="position:relative;">
+        <div class="prototype-label">ПРОТОТИП</div>
+
+        <!-- Decorative wave -->
+        <div class="sign-wave">
+          <svg viewBox="0 0 420 180" fill="none">
+            <path d="M0 60C70 20 140 100 210 60C280 20 350 100 420 60V180H0V60Z" fill="white"/>
+          </svg>
+        </div>
+
+        <div class="sign-header">
+          <div class="sign-logo">ПАРК СКАЗКА</div>
+          <div class="sign-zone-badge">🦜 Зона Птиц</div>
+        </div>
+
+        <div class="sign-photo-area">
+          <div class="sign-photo-frame">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sign-photo-inner">
+              <img src="ostrich.png" alt="Африканский страус">
+            </div>
+          </div>
+        </div>
+
+        <div class="sign-name">
+          <h2>Африканский страус</h2>
+          <div class="sign-name-latin">Struthio camelus</div>
+        </div>
+
+        <div class="sign-cta">
+          <div class="sign-cta-bubble">
+            <div class="sign-cta-text">
+              <span class="scan-icon">📲</span> Отсканируй и познакомься со мной!
+            </div>
+          </div>
+        </div>
+
+        <div class="sign-qr">
+          <div class="qr-box">
+            <div id="qrcode"></div>
+          </div>
+        </div>
+
+        <div class="sign-footer">
+          <span>parkskazka.com</span>
+        </div>
+      </div>
+
+      <div class="desc-panel" style="margin-top:32px;">
+        <h3>Табличка у вольера</h3>
+        <p>Формат А5 (148×210 мм) или А4. Введите URL задеплоенной страницы ниже — QR-код обновится автоматически.</p>
+        <div class="qr-url-input-wrap">
+          <input class="qr-url-input" id="qrUrlInput" type="url" placeholder="https://username.github.io/park-birds/ostrich.html" value="https://parkskazka.com/birds/ostrich">
+          <button class="qr-url-btn" onclick="generateQR()">Обновить QR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 2: MOBILE WEB PAGE ===== -->
+<div id="tab-web" class="tab-content">
+  <div class="mobile-wrapper">
+    <div style="text-align:center;">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="mobile-page">
+
+          <!-- Hero -->
+          <div class="hero">
+            <div class="hero-deco-circle"></div>
+            <div class="hero-deco-circle"></div>
+            <div class="hero-deco-circle"></div>
+
+            <div class="hero-badge">🦜 Зона Птиц • Парк Сказка</div>
+
+            <div class="hero-photo">
+              <div class="hero-photo-inner">
+                <img src="ostrich.png" alt="Африканский страус">
+              </div>
+            </div>
+
+            <h1>Африканский страус</h1>
+            <p class="hero-subtitle">Struthio camelus</p>
+          </div>
+
+          <!-- Quick facts -->
+          <div class="quick-facts">
+            <div class="fact-item">
+              <div class="fact-icon">📏</div>
+              <div class="fact-value">2.7 м</div>
+              <div class="fact-label">рост</div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">⚖️</div>
+              <div class="fact-value">150 кг</div>
+              <div class="fact-label">вес</div>
+            </div>
+            <div class="fact-item">
+              <div class="fact-icon">⚡</div>
+              <div class="fact-value">70 км/ч</div>
+              <div class="fact-label">скорость</div>
+            </div>
+          </div>
+
+          <!-- About -->
+          <div class="content-section">
+            <h3 class="section-title">📖 Обо мне</h3>
+            <div class="info-card">
+              Привет! Я — самая большая птица на планете! Я не умею летать, зато бегаю быстрее любой лошади. Мои глаза — самые большие среди наземных животных, а одно моё яйцо весит как 24 куриных! Моя родина — саванны Африки.
+            </div>
+          </div>
+
+          <!-- Audio guide -->
+          <div class="content-section" style="padding-top: 0;">
+            <div class="audio-player">
+              <button class="audio-btn" onclick="this.textContent = this.textContent === '▶' ? '⏸' : '▶'">▶</button>
+              <div class="audio-info">
+                <div class="audio-title">🎧 Аудиогид</div>
+                <div class="audio-desc">Послушай рассказ о страусе — 2 мин</div>
+                <div class="audio-wave">
+                  <span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fun facts -->
+          <div class="content-section" style="padding-top: 0;">
+            <h3 class="section-title">🤩 Удивительные факты</h3>
+            <div class="fun-facts-grid">
+              <div class="fun-fact">
+                <div class="fun-fact-emoji">🥚</div>
+                <div class="fun-fact-text">Яйцо страуса весит до 1.8 кг!</div>
+              </div>
+              <div class="fun-fact">
+                <div class="fun-fact-emoji">👁️</div>
+                <div class="fun-fact-text">Глаз больше, чем его мозг</div>
+              </div>
+              <div class="fun-fact">
+                <div class="fun-fact-emoji">🦶</div>
+                <div class="fun-fact-text">Только 2 пальца на ноге</div>
+              </div>
+              <div class="fun-fact">
+                <div class="fun-fact-emoji">🌍</div>
+                <div class="fun-fact-text">Живут до 40–45 лет</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery -->
+          <div class="content-section" style="padding-top: 0;">
+            <h3 class="section-title">📸 Фотогалерея</h3>
+            <div class="gallery-strip">
+              <div class="gallery-item" style="background:none;"><img src="ostrich.png" alt="Страус"></div>
+              <div class="gallery-item" style="background: linear-gradient(135deg, #E8F5E9, #C8E6C9);">🥚</div>
+              <div class="gallery-item" style="background: linear-gradient(135deg, #E3F2FD, #BBDEFB);">🪶</div>
+              <div class="gallery-item" style="background: linear-gradient(135deg, #FCE4EC, #F8BBD0);">🏃</div>
+            </div>
+          </div>
+
+          <!-- Safety -->
+          <div class="safety-section">
+            <div class="safety-title">⚠️ Правила поведения</div>
+            <div class="safety-rule">
+              <span class="safety-rule-icon">🚫</span>
+              <span>Не кормите птиц без разрешения смотрителя</span>
+            </div>
+            <div class="safety-rule">
+              <span class="safety-rule-icon">📵</span>
+              <span>Не используйте вспышку при фотографировании</span>
+            </div>
+            <div class="safety-rule">
+              <span class="safety-rule-icon">🤫</span>
+              <span>Не шумите и не стучите по ограждению</span>
+            </div>
+            <div class="safety-rule">
+              <span class="safety-rule-icon">👀</span>
+              <span>Держите дистанцию — страус может клюнуть!</span>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="cta-section">
+            <a class="cta-btn" href="#">
+              🎂 Отметить День Рождения в парке
+            </a>
+            <p style="font-size: 12px; color: #aaa; margin-top: 12px;">Пакеты от 15 000 ₽ • Подробнее на сайте</p>
+          </div>
+
+          <!-- Footer -->
+          <div class="park-footer">
+            <div class="park-footer-logo">🏰 Парк Сказка</div>
+            <div class="park-footer-text">Москва • parkskazka.com</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="desc-panel" style="margin-top:32px;">
+        <h3>Мобильная страница</h3>
+        <p>Посетитель сканирует QR-код с таблички и попадает на эту страницу. Информация о птице + аудиогид + правила + CTA на день рождения.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+  if (tab === 'sign') {
+    document.querySelectorAll('.tab-btn')[0].classList.add('active');
+    document.getElementById('tab-sign').classList.add('active');
+  } else {
+    document.querySelectorAll('.tab-btn')[1].classList.add('active');
+    document.getElementById('tab-web').classList.add('active');
+  }
+}
+
+let qrInstance = null;
+function generateQR() {
+  const url = document.getElementById('qrUrlInput').value || 'https://parkskazka.com/birds/ostrich';
+  const container = document.getElementById('qrcode');
+  container.innerHTML = '';
+  qrInstance = new QRCode(container, {
+    text: url,
+    width: 100,
+    height: 100,
+    colorDark: '#1565C0',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
+
+window.addEventListener('DOMContentLoaded', generateQR);
+</script>
+
+</body>
+</html>

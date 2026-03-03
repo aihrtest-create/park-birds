@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Африканский страус — Парк Сказка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky-100: #E8F4FD;
+    --sky-200: #C5E4F9;
+    --sky-300: #8DC8F0;
+    --sky-400: #4BA8E8;
+    --sky-500: #2196F3;
+    --sky-600: #1976D2;
+    --sky-700: #1565C0;
+    --pink-400: #F06292;
+    --pink-500: #EC407A;
+    --yellow-400: #FFD54F;
+    --yellow-500: #FFC107;
+    --green-400: #66BB6A;
+    --white: #FFFFFF;
+    --dark: #1A2A3A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    max-width: 480px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(180deg, var(--sky-500) 0%, var(--sky-600) 60%, var(--sky-700) 100%);
+    padding: 48px 24px 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 380px;
+  }
+
+  .hero-deco-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .hero-deco-circle:nth-child(1) { width: 200px; height: 200px; top: -60px; right: -60px; }
+  .hero-deco-circle:nth-child(2) { width: 120px; height: 120px; bottom: 40px; left: -40px; }
+  .hero-deco-circle:nth-child(3) { width: 80px; height: 80px; top: 80px; left: 20px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--yellow-400);
+    font-weight: 700;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+    animation: fadeSlideDown 0.6s ease-out;
+  }
+
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-photo {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--yellow-400), var(--pink-400));
+    padding: 4px;
+    position: relative;
+    z-index: 2;
+    animation: photoAppear 0.8s ease-out 0.2s both;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  @keyframes photoAppear {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .hero-photo-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.1);
+    font-size: 90px;
+  }
+
+  .hero h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--white);
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+    animation: fadeSlideDown 0.6s ease-out 0.4s both;
+  }
+
+  .hero-subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    font-style: italic;
+    margin-top: 4px;
+    position: relative;
+    z-index: 2;
+    animation: fadeSlideDown 0.6s ease-out 0.5s both;
+  }
+
+  /* ===== QUICK FACTS ===== */
+  .quick-facts {
+    display: flex;
+    justify-content: space-around;
+    background: var(--white);
+    margin: -20px 16px 0;
+    border-radius: 16px;
+    padding: 16px 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 3;
+    animation: fadeSlideDown 0.6s ease-out 0.6s both;
+  }
+
+  .fact-item { text-align: center; flex: 1; }
+  .fact-icon { font-size: 24px; margin-bottom: 4px; }
+  .fact-value {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--sky-700);
+  }
+  .fact-label { font-size: 10px; color: #999; margin-top: 1px; }
+  .fact-item + .fact-item { border-left: 1px solid #eee; }
+
+  /* ===== SECTIONS ===== */
+  .content-section {
+    padding: 24px 20px;
+    animation: fadeIn 0.6s ease-out both;
+  }
+  .content-section:nth-child(4) { animation-delay: 0.7s; }
+  .content-section:nth-child(5) { animation-delay: 0.8s; }
+  .content-section:nth-child(6) { animation-delay: 0.9s; }
+  .content-section:nth-child(7) { animation-delay: 1.0s; }
+
+  .section-title {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--sky-700);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ===== ABOUT ===== */
+  .info-card {
+    background: var(--sky-100);
+    border-radius: 16px;
+    padding: 16px;
+    border-left: 4px solid var(--sky-400);
+    line-height: 1.6;
+    font-size: 14px;
+    color: #444;
+  }
+
+  /* ===== AUDIO PLAYER ===== */
+  .audio-player {
+    background: linear-gradient(135deg, var(--sky-100), #E8F5E9);
+    border-radius: 16px;
+    padding: 16px;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .audio-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--sky-500);
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(33,150,243,0.3);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .audio-btn:hover { background: var(--sky-600); transform: scale(1.05); }
+  .audio-btn:active { transform: scale(0.95); }
+  .audio-info { flex: 1; }
+  .audio-title { font-weight: 700; font-size: 13px; color: var(--sky-700); }
+  .audio-desc { font-size: 11px; color: #888; margin-top: 2px; }
+  .audio-wave {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    height: 20px;
+    margin-top: 6px;
+  }
+  .audio-wave span {
+    display: block;
+    width: 3px;
+    background: var(--sky-400);
+    border-radius: 2px;
+    animation: wave 1.2s ease-in-out infinite;
+  }
+  .audio-wave span:nth-child(1) { height: 6px; animation-delay: 0s; }
+  .audio-wave span:nth-child(2) { height: 12px; animation-delay: 0.1s; }
+  .audio-wave span:nth-child(3) { height: 8px; animation-delay: 0.2s; }
+  .audio-wave span:nth-child(4) { height: 16px; animation-delay: 0.3s; }
+  .audio-wave span:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+  .audio-wave span:nth-child(6) { height: 14px; animation-delay: 0.5s; }
+  .audio-wave span:nth-child(7) { height: 7px; animation-delay: 0.6s; }
+  .audio-wave span:nth-child(8) { height: 11px; animation-delay: 0.7s; }
+
+  @keyframes wave {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.4); }
+  }
+
+  /* ===== FUN FACTS GRID ===== */
+  .fun-facts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .fun-fact {
+    background: linear-gradient(135deg, var(--sky-100), #f0e8ff);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .fun-fact:active { transform: scale(0.97); }
+  .fun-fact-emoji { font-size: 28px; margin-bottom: 6px; }
+  .fun-fact-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 0 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .gallery-strip::-webkit-scrollbar { display: none; }
+  .gallery-item {
+    width: 100px;
+    height: 80px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    overflow: hidden;
+  }
+  .gallery-item:nth-child(1) { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+  .gallery-item:nth-child(2) { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+  .gallery-item:nth-child(3) { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+  .gallery-item:nth-child(4) { background: linear-gradient(135deg, #FCE4EC, #F8BBD0); }
+
+  /* ===== SAFETY ===== */
+  .safety-section {
+    background: linear-gradient(135deg, #FFF9E6, #FFF3CC);
+    margin: 0 20px;
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid var(--yellow-400);
+    animation: fadeIn 0.6s ease-out 1.1s both;
+  }
+  .safety-title {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #F57C00;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .safety-rule {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+  }
+  .safety-rule-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--yellow-400);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    margin-top: 1px;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    padding: 24px 20px 32px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-out 1.2s both;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--pink-500), var(--pink-400));
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 14px 32px;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(236,64,122,0.4);
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .cta-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 12px rgba(236,64,122,0.4);
+  }
+  .cta-sub {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 12px;
+  }
+
+  /* ===== FOOTER ===== */
+  .park-footer {
+    text-align: center;
+    padding: 0 20px 32px;
+    animation: fadeIn 0.6s ease-out 1.3s both;
+  }
+  .park-footer-logo {
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--sky-600);
+  }
+  .park-footer-text {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-deco-circle"></div>
+  <div class="hero-deco-circle"></div>
+  <div class="hero-deco-circle"></div>
+
+  <div class="hero-badge">🦜 Зона Птиц • Парк Сказка</div>
+
+  <div class="hero-photo">
+    <div class="hero-photo-inner">🦤</div>
+  </div>
+
+  <h1>Африканский страус</h1>
+  <p class="hero-subtitle">Struthio camelus</p>
+</div>
+
+<!-- Quick facts -->
+<div class="quick-facts">
+  <div class="fact-item">
+    <div class="fact-icon">📏</div>
+    <div class="fact-value">2.7 м</div>
+    <div class="fact-label">рост</div>
+  </div>
+  <div class="fact-item">
+    <div class="fact-icon">⚖️</div>
+    <div class="fact-value">150 кг</div>
+    <div class="fact-label">вес</div>
+  </div>
+  <div class="fact-item">
+    <div class="fact-icon">⚡</div>
+    <div class="fact-value">70 км/ч</div>
+    <div class="fact-label">скорость</div>
+  </div>
+</div>
+
+<!-- About -->
+<div class="content-section">
+  <h3 class="section-title">📖 Обо мне</h3>
+  <div class="info-card">
+    Привет! Я — самая большая птица на планете! Я не умею летать, зато бегаю быстрее любой лошади. Мои глаза — самые большие среди наземных животных, а одно моё яйцо весит как 24 куриных! Моя родина — саванны Африки.
+  </div>
+</div>
+
+<!-- Audio guide -->
+<div class="content-section" style="padding-top: 0;">
+  <div class="audio-player">
+    <button class="audio-btn" onclick="this.textContent = this.textContent === '▶' ? '⏸' : '▶'">▶</button>
+    <div class="audio-info">
+      <div class="audio-title">🎧 Аудиогид</div>
+      <div class="audio-desc">Послушай рассказ о страусе — 2 мин</div>
+      <div class="audio-wave">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fun facts -->
+<div class="content-section" style="padding-top: 0;">
+  <h3 class="section-title">🤩 Удивительные факты</h3>
+  <div class="fun-facts-grid">
+    <div class="fun-fact">
+      <div class="fun-fact-emoji">🥚</div>
+      <div class="fun-fact-text">Яйцо страуса весит до 1.8 кг!</div>
+    </div>
+    <div class="fun-fact">
+      <div class="fun-fact-emoji">👁️</div>
+      <div class="fun-fact-text">Глаз больше, чем его мозг</div>
+    </div>
+    <div class="fun-fact">
+      <div class="fun-fact-emoji">🦶</div>
+      <div class="fun-fact-text">Только 2 пальца на ноге</div>
+    </div>
+    <div class="fun-fact">
+      <div class="fun-fact-emoji">🌍</div>
+      <div class="fun-fact-text">Живут до 40–45 лет</div>
+    </div>
+  </div>
+</div>
+
+<!-- Gallery -->
+<div class="content-section" style="padding-top: 0;">
+  <h3 class="section-title">📸 Фотогалерея</h3>
+  <div class="gallery-strip">
+    <div class="gallery-item">🦤</div>
+    <div class="gallery-item">🥚</div>
+    <div class="gallery-item">🪶</div>
+    <div class="gallery-item">🏃</div>
+  </div>
+</div>
+
+<!-- Safety -->
+<div class="safety-section">
+  <div class="safety-title">⚠️ Правила поведения</div>
+  <div class="safety-rule">
+    <span class="safety-rule-icon">🚫</span>
+    <span>Не кормите птиц без разрешения смотрителя</span>
+  </div>
+  <div class="safety-rule">
+    <span class="safety-rule-icon">📵</span>
+    <span>Не используйте вспышку при фотографировании</span>
+  </div>
+  <div class="safety-rule">
+    <span class="safety-rule-icon">🤫</span>
+    <span>Не шумите и не стучите по ограждению</span>
+  </div>
+  <div class="safety-rule">
+    <span class="safety-rule-icon">👀</span>
+    <span>Держите дистанцию — страус может клюнуть!</span>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <a class="cta-btn" href="#">
+    🎂 Отметить День Рождения в парке
+  </a>
+  <p class="cta-sub">Пакеты от 15 000 ₽ • Подробнее на сайте</p>
+</div>
+
+<!-- Footer -->
+<div class="park-footer">
+  <div class="park-footer-logo">🏰 Парк Сказка</div>
+  <div class="park-footer-text">Москва • parkskazka.com</div>
+</div>
+
+</body>
+</html>
