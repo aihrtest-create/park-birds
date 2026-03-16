@@ -1,0 +1,457 @@
+/* ========================================
+   Парк Сказка — Страница птицы
+   Зелёный дизайн по референсу
+   ======================================== */
+
+.bird-page {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--bg-page);
+  overflow-x: hidden;
+}
+
+/* ---- HERO ---- */
+.bird-hero {
+  background: linear-gradient(180deg, #43A047 0%, #2E7D32 60%, #1B5E20 100%);
+  padding: 20px 24px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative wave at bottom of hero */
+.bird-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: var(--bg-page);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+/* Decorative circles */
+.bird-hero .deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  pointer-events: none;
+}
+.bird-hero .deco-circle:nth-child(1) { width: 180px; height: 180px; top: -60px; right: -40px; }
+.bird-hero .deco-circle:nth-child(2) { width: 80px; height: 80px; top: 20px; left: -20px; }
+.bird-hero .deco-circle:nth-child(3) { width: 120px; height: 120px; bottom: 40px; left: -40px; }
+
+/* Back link */
+.bird-hero .back-link {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  float: left;
+}
+.bird-hero .back-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Section badge */
+.bird-hero .section-badge {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-full);
+  padding: 5px 16px;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--yellow-400);
+  clear: both;
+}
+
+/* Photo circle */
+.bird-hero .photo-area {
+  position: relative;
+  z-index: 2;
+  margin: 16px auto 16px;
+  width: 180px;
+  height: 180px;
+  animation: photoAppear 0.6s ease-out;
+}
+
+.photo-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-300), var(--green-600));
+  padding: 5px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.1);
+  font-size: 80px;
+}
+
+.photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sparkles */
+.photo-area .sparkle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  animation: sparkleAnim 2s ease-in-out infinite;
+}
+.photo-area .sparkle::before,
+.photo-area .sparkle::after {
+  content: '';
+  position: absolute;
+  background: var(--yellow-400);
+}
+.photo-area .sparkle::before {
+  width: 2px; height: 12px;
+  left: 5px; top: 0;
+  border-radius: 2px;
+}
+.photo-area .sparkle::after {
+  width: 12px; height: 2px;
+  top: 5px; left: 0;
+  border-radius: 2px;
+}
+.photo-area .sparkle:nth-child(1) { top: -5px; right: 10px; animation-delay: 0s; }
+.photo-area .sparkle:nth-child(2) { bottom: 15px; left: 0; animation-delay: 0.5s; }
+.photo-area .sparkle:nth-child(3) { top: 30px; left: -10px; animation-delay: 1s; }
+
+@keyframes sparkleAnim {
+  0%, 100% { opacity: 0.3; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+
+/* "Not a bird" badge */
+.not-bird-badge {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFEB3B;
+  margin-bottom: 8px;
+}
+
+/* Bird name */
+.bird-hero .bird-name {
+  position: relative;
+  z-index: 2;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  margin: 4px 0 2px;
+}
+
+.bird-hero .bird-name-alt {
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2px;
+}
+
+.bird-hero .bird-name-latin {
+  position: relative;
+  z-index: 2;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+}
+
+/* ---- CONTENT AREA ---- */
+.bird-content {
+  padding: 0 16px 32px;
+  margin-top: -8px;
+}
+
+/* ---- QUICK FACTS ---- */
+.quick-facts-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 16px;
+  animation: fadeSlideUp 0.5s ease-out 0.1s both;
+}
+
+.quick-fact {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.quick-fact:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: var(--green-100);
+}
+
+.quick-fact .fact-icon {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 6px;
+  color: var(--green-700);
+}
+
+.quick-fact .fact-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.quick-fact .fact-value {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--green-800);
+}
+
+.quick-fact .fact-label {
+  font-size: 11px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* ---- CLASSIFICATION ---- */
+.classification-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  animation: fadeSlideUp 0.5s ease-out 0.15s both;
+}
+
+.classification-item {
+  flex: 1;
+}
+
+.classification-item .clf-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.classification-item .clf-value {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-800);
+}
+
+/* ---- ABOUT ME ---- */
+.about-card {
+  background: var(--green-50);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid var(--green-100);
+  animation: fadeSlideUp 0.5s ease-out 0.2s both;
+}
+
+.about-card .section-heading {
+  margin-bottom: 10px;
+}
+
+.about-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ---- HABITAT ---- */
+.habitat-card {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  animation: fadeSlideUp 0.5s ease-out 0.25s both;
+}
+
+.habitat-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* ---- FUN FACTS ---- */
+.fun-facts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+  animation: fadeSlideUp 0.5s ease-out 0.3s both;
+}
+
+.fun-fact-item {
+  background: var(--green-50);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  border: 1px solid var(--green-100);
+  text-align: center;
+}
+
+.fun-fact-item .fact-emoji {
+  font-size: 28px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.fun-fact-item .fact-text {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* ---- SAFETY RULES ---- */
+.safety-card {
+  background: linear-gradient(135deg, var(--green-600), var(--green-700));
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+  animation: fadeSlideUp 0.5s ease-out 0.35s both;
+}
+
+.safety-card .section-heading {
+  color: #FFFFFF;
+  margin-bottom: 14px;
+}
+
+.safety-card .section-heading .icon {
+  color: var(--yellow-400);
+}
+
+.safety-rules-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.safety-rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(255,255,255,0.12);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.safety-rule .rule-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.safety-rule .rule-text {
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.95);
+  font-weight: 600;
+}
+
+/* ---- CTA BLOCK ---- */
+.cta-block {
+  background: linear-gradient(135deg, var(--pink-400), var(--pink-500));
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 20px rgba(236, 64, 122, 0.25);
+  animation: fadeSlideUp 0.5s ease-out 0.4s both;
+}
+
+.cta-block h3 {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.cta-block p {
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.cta-block .cta-button {
+  display: inline-block;
+  background: #FFFFFF;
+  color: var(--pink-500);
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 28px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ---- FOOTER ---- */
+.bird-footer {
+  text-align: center;
+  padding: 16px 24px 32px;
+}
+
+.bird-footer .footer-logo {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-700);
+  margin-bottom: 4px;
+}
+
+.bird-footer .footer-city {
+  font-size: 12px;
+  color: var(--text-light);
+}

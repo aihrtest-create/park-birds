@@ -1,0 +1,130 @@
+{
+  "sections": [
+    {
+      "id": "bolshoy-aviary-lower",
+      "name": "Большой авиарий — нижний ярус",
+      "short_name": "Нижний ярус",
+      "location": "Большой авиарий",
+      "order": 1
+    },
+    {
+      "id": "bolshoy-aviary-middle",
+      "name": "Большой авиарий — средний ярус",
+      "short_name": "Средний ярус",
+      "location": "Большой авиарий",
+      "order": 2
+    },
+    {
+      "id": "bolshoy-aviary-upper",
+      "name": "Большой авиарий — верхний ярус",
+      "short_name": "Верхний ярус",
+      "location": "Большой авиарий",
+      "order": 3
+    },
+    {
+      "id": "fazanятnik",
+      "name": "Фазанятник",
+      "short_name": "Фазанятник",
+      "location": "Фазанятник",
+      "order": 4
+    },
+    {
+      "id": "vyshka-1",
+      "name": "Сычи и совы",
+      "short_name": "1-я вышка",
+      "location": "1-я вышка",
+      "order": 5
+    },
+    {
+      "id": "dekorativnye-golubi",
+      "name": "Декоративные голуби",
+      "short_name": "Голуби",
+      "location": "1-й шестисекторный",
+      "order": 6
+    },
+    {
+      "id": "vodoplavayushchie",
+      "name": "Водоплавающие",
+      "short_name": "Водоплавающие",
+      "location": "Водоплавающие",
+      "order": 7
+    },
+    {
+      "id": "drofy",
+      "name": "Дрофы",
+      "short_name": "Дрофы",
+      "location": "Дрофы",
+      "order": 8
+    },
+    {
+      "id": "tayga",
+      "name": "Тайга",
+      "short_name": "Тайга",
+      "location": "Тайга",
+      "order": 9
+    },
+    {
+      "id": "sovyatnik",
+      "name": "Совятник",
+      "short_name": "Совятник",
+      "location": "Совятник",
+      "order": 10
+    },
+    {
+      "id": "malyy-aviary",
+      "name": "Малый авиарий",
+      "short_name": "Малый авиарий",
+      "location": "Малый авиарий",
+      "order": 11
+    },
+    {
+      "id": "rukokrylye",
+      "name": "Рукокрылые",
+      "short_name": "Рукокрылые",
+      "location": "Рукокрылые",
+      "order": 12
+    },
+    {
+      "id": "bolshie-popugai",
+      "name": "Большие попугаи",
+      "short_name": "Попугаи",
+      "location": "Большие попугаи",
+      "order": 13
+    },
+    {
+      "id": "popugai-zhako",
+      "name": "Попугаи жако",
+      "short_name": "Жако",
+      "location": "Попугаи жако",
+      "order": 14
+    },
+    {
+      "id": "zhuravli",
+      "name": "Журавли",
+      "short_name": "Журавли",
+      "location": "Журавли",
+      "order": 15
+    },
+    {
+      "id": "vyshka-2",
+      "name": "Сова сипуха",
+      "short_name": "2-я вышка",
+      "location": "2-я вышка",
+      "order": 16
+    },
+    {
+      "id": "vyshka-3",
+      "name": "Пряничный домик",
+      "short_name": "3-я вышка",
+      "location": "3-я вышка «Пряничный домик»",
+      "order": 17
+    },
+    {
+      "id": "dekorativnye-kury",
+      "name": "Декоративные куры",
+      "short_name": "Куры",
+      "location": "2-й шестисекторный",
+      "order": 18
+    }
+  ]
+}
