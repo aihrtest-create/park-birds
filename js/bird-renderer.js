@@ -210,12 +210,6 @@
 
     html += '</div>'; // end content
 
-    // Footer
-    html += '<div class="bird-footer">';
-    html += '<div class="footer-logo">🏰 Парк Сказка</div>';
-    html += '<div class="footer-city">Москва</div>';
-    html += '</div>';
-
     PAGE_EL.innerHTML = html;
   }
 
