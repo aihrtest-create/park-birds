@@ -54,19 +54,34 @@
   text-align: center;
 }
 
-.video-park-label {
+/* Park logo on video */
+.video-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.video-logo .logo-main {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 38px;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+  letter-spacing: 2px;
+  text-shadow:
+    0 2px 12px rgba(0,0,0,0.3),
+    0 0 40px rgba(255,255,255,0.15);
+}
+
+.video-logo .logo-sub {
   font-family: 'Comfortaa', sans-serif;
   font-size: 10px;
   font-weight: 700;
-  color: rgba(255,255,255,0.8);
-  letter-spacing: 4px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 6px;
   text-transform: uppercase;
-  margin-bottom: 12px;
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 6px 18px;
-  border-radius: 20px;
+  margin-top: 4px;
 }
 
 .video-emoji {

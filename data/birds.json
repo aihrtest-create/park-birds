@@ -254,56 +254,6 @@
       "is_bird": false,
       "photo": null,
       "gallery_count": 5
-    },
-    {
-      "id": "ostrich",
-      "section_id": "bolshoy-aviary-lower",
-      "name_ru": "Африканский страус",
-      "name_alt": null,
-      "name_latin": "Struthio camelus",
-      "name_en": "Common Ostrich",
-      "emoji": "🐦",
-      "order": "Страусообразные",
-      "family": "Страусовые",
-      "quick_facts": [
-        {
-          "icon": "ruler",
-          "value": "2.7 м",
-          "label": "рост"
-        },
-        {
-          "icon": "weight",
-          "value": "150 кг",
-          "label": "вес"
-        },
-        {
-          "icon": "bolt",
-          "value": "70 км/ч",
-          "label": "скорость"
-        }
-      ],
-      "about": "Привет! Я — самая большая птица на планете! Я не умею летать, зато бегаю быстрее любой лошади. Мои глаза — самые большие среди наземных животных, а одно моё яйцо весит как 24 куриных! Моя родина — саванны Африки.",
-      "habitat": "Африка. Саванны, полупустыни, открытые равнины.",
-      "fun_facts": [
-        {
-          "emoji": "🥚",
-          "text": "Яйцо весит до 1.8 кг!"
-        },
-        {
-          "emoji": "👁️",
-          "text": "Глаз больше, чем его мозг"
-        },
-        {
-          "emoji": "🦶",
-          "text": "Только 2 пальца на ноге"
-        },
-        {
-          "emoji": "🌍",
-          "text": "Живут до 40–45 лет"
-        }
-      ],
-      "is_bird": true,
-      "photo": null
     }
   ]
 }
