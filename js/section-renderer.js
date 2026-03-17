@@ -67,12 +67,9 @@
 
     // Hero
     html += '<div class="section-hero">';
-    html += '<div class="deco-circle"></div><div class="deco-circle"></div>';
+    html += '<div class="deco-circle"></div><div class="deco-circle"></div><div class="deco-circle"></div>';
     html += '<a href="index.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Назад</a>';
     html += '<h1>' + esc(section.name) + '</h1>';
-    if (section.location && section.location !== section.name) {
-      html += '<div class="section-location">📍 ' + esc(section.location) + '</div>';
-    }
     html += '</div>';
 
     // Content
