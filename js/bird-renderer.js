@@ -171,6 +171,19 @@
       html += '</div>';
     }
 
+    // Photo gallery
+    if (bird.gallery_count && bird.gallery_count > 0) {
+      html += '<div class="photo-gallery">';
+      html += '<div class="section-heading" style="padding: 0 4px; margin-bottom: 10px;"><span class="icon-emoji">📷</span>Фотографии</div>';
+      html += '<div class="gallery-scroll">';
+      for (var g = 1; g <= bird.gallery_count; g++) {
+        var pad = g < 10 ? '0' + g : '' + g;
+        var src = 'images/gallery/' + esc(bird.id) + '/' + pad + '.png';
+        html += '<div class="gallery-item"><img src="' + src + '" alt="' + esc(bird.name_ru) + ' фото ' + g + '" loading="lazy"></div>';
+      }
+      html += '</div></div>';
+    }
+
     // Fun facts
     if (bird.fun_facts && bird.fun_facts.length) {
       html += '<div class="section-heading" style="padding: 0 4px; margin-bottom: 10px;"><span class="icon-emoji">⭐</span>Удивительные факты</div>';
