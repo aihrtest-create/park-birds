@@ -321,12 +321,12 @@
 
 /* ---- PHOTO GALLERY ---- */
 .photo-gallery {
-  margin: 0 -16px 20px;
+  margin: 0 0 20px;
   animation: fadeSlideUp 0.5s ease-out 0.27s both;
 }
 
 .photo-gallery .section-heading {
-  padding: 0 16px;
+  padding: 0 4px;
   margin-bottom: 12px;
 }
 
@@ -334,7 +334,7 @@
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding: 4px 16px 14px;
+  padding: 4px 0 14px;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
