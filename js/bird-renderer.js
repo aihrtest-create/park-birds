@@ -104,8 +104,9 @@
     html += '<div class="bird-hero">';
     html += '<div class="deco-circle"></div><div class="deco-circle"></div><div class="deco-circle"></div>';
 
-    // Back link
-    html += '<a href="index.html" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Назад</a>';
+    // Back link — go to section page if available
+    var backUrl = section ? 'section.html?id=' + encodeURIComponent(section.id) : 'index.html';
+    html += '<a href="' + backUrl + '" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>Назад</a>';
 
     // Section badge
     if (sectionName) {

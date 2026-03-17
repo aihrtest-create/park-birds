@@ -1,5 +1,5 @@
 /* ========================================
-   Парк Сказка — Каталог птиц
+   Парк Сказка — Каталог разделов
    ======================================== */
 
 .catalog-page {
@@ -7,6 +7,7 @@
   margin: 0 auto;
   min-height: 100vh;
   background: var(--bg-page);
+  padding-bottom: 70px;
 }
 
 /* ---- HEADER ---- */
@@ -68,138 +69,63 @@
   margin-top: 6px;
 }
 
-/* ---- SECTIONS LIST ---- */
+/* ---- SECTION CARDS ---- */
 .catalog-content {
   padding: 0 16px 32px;
   margin-top: -8px;
 }
 
-/* Accordion section */
-.catalog-section {
-  background: var(--bg-white);
-  border-radius: var(--radius-md);
-  margin-bottom: 10px;
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-
-.section-toggle {
-  width: 100%;
-  border: none;
-  background: none;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  font-family: 'Comfortaa', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--green-800);
-  text-align: left;
-}
-
-.section-toggle .toggle-icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-  color: var(--green-400);
-}
-
-.section-toggle .toggle-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.section-toggle .section-count {
-  margin-left: auto;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-light);
-  background: var(--green-50);
-  padding: 2px 10px;
-  border-radius: var(--radius-full);
-}
-
-.catalog-section.open .toggle-icon {
-  transform: rotate(90deg);
-}
-
-/* Bird list inside section */
-.bird-list {
-  display: none;
-  padding: 0 16px 12px;
-}
-
-.catalog-section.open .bird-list {
+.section-card-link {
   display: block;
-}
-
-.bird-list-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  transition: background 0.15s ease;
   text-decoration: none;
   color: inherit;
+  margin-bottom: 10px;
 }
 
-.bird-list-item:hover,
-.bird-list-item:active {
-  background: var(--green-50);
-}
-
-.bird-list-item .bird-emoji {
-  font-size: 24px;
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  background: var(--green-50);
-  border-radius: 50%;
+.section-card-item {
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
-.bird-list-item .bird-info {
+.section-card-item:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow-md);
+}
+
+.section-card-info {
   flex: 1;
   min-width: 0;
 }
 
-.bird-list-item .bird-info .bird-title {
+.section-card-name {
+  font-family: 'Comfortaa', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--green-800);
 }
 
-.bird-list-item .bird-info .bird-subtitle {
-  font-size: 11px;
+.section-card-count {
+  font-size: 12px;
   color: var(--text-light);
-  font-style: italic;
+  margin-top: 2px;
 }
 
-.bird-list-item .bird-arrow {
-  width: 16px;
-  height: 16px;
+.section-card-arrow {
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
   color: var(--green-300);
 }
 
-.bird-list-item .bird-arrow svg {
+.section-card-arrow svg {
   width: 100%;
   height: 100%;
-}
-
-/* Direct link section (for sections with 1 bird) */
-.catalog-section.direct-link .section-toggle {
-  cursor: default;
-}
-
-.catalog-section.direct-link .bird-list {
-  display: block;
 }
 
 /* ---- FOOTER ---- */

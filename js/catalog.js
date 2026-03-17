@@ -1,6 +1,6 @@
 /* ========================================
    Парк Сказка — Catalog Renderer
-   Загружает разделы и птиц, строит аккордеон
+   Загружает разделы и строит сетку разделов
    ======================================== */
 
 (function () {
@@ -29,81 +29,44 @@
     });
   }
 
-  // Group birds by section_id
-  function groupBirds(birds, sections) {
-    var map = {};
-    sections.forEach(function (s) { map[s.id] = []; });
+  // Count birds per section
+  function countBirdsPerSection(birds) {
+    var counts = {};
     birds.forEach(function (b) {
-      if (map[b.section_id]) {
-        map[b.section_id].push(b);
-      }
+      counts[b.section_id] = (counts[b.section_id] || 0) + 1;
     });
-    return map;
+    return counts;
   }
 
-  // Chevron SVG
-  var CHEVRON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+  // Russian pluralization for "обитатель"
+  function pluralize(n) {
+    if (n % 10 === 1 && n % 100 !== 11) return 'обитатель';
+    if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) return 'обитателя';
+    return 'обитателей';
+  }
 
   // Arrow SVG
   var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
 
-  function renderBirdItem(bird) {
-    var subtitle = bird.name_latin || '';
-    var emoji = bird.emoji || '🐦';
-    if (bird.is_bird === false) emoji = '🦇';
-
-    return '<a href="bird.html?id=' + esc(bird.id) + '" class="bird-list-item">' +
-      '<span class="bird-emoji">' + esc(emoji) + '</span>' +
-      '<div class="bird-info">' +
-        '<div class="bird-title">' + esc(bird.name_ru) + '</div>' +
-        (subtitle ? '<div class="bird-subtitle">' + esc(subtitle) + '</div>' : '') +
-      '</div>' +
-      '<span class="bird-arrow">' + ARROW + '</span>' +
-    '</a>';
-  }
-
   function render(sections, birds) {
-    var grouped = groupBirds(birds, sections);
-
+    var birdCounts = countBirdsPerSection(birds);
     var html = '';
 
     sections.forEach(function (section) {
-      var sectionBirds = grouped[section.id];
-      if (!sectionBirds || sectionBirds.length === 0) return;
+      var count = birdCounts[section.id] || 0;
 
-      var isSingle = sectionBirds.length === 1;
-
-      html += '<div class="catalog-section' + (isSingle ? ' direct-link open' : '') + '">';
-
-      // Section header
-      html += '<button class="section-toggle" data-section="' + esc(section.id) + '">';
-      html += '<span class="toggle-icon">' + CHEVRON + '</span>';
-      html += '<span>' + esc(section.name) + '</span>';
-      if (!isSingle) {
-        html += '<span class="section-count">' + sectionBirds.length + '</span>';
-      }
-      html += '</button>';
-
-      // Bird list
-      html += '<div class="bird-list">';
-      sectionBirds.forEach(function (bird) {
-        html += renderBirdItem(bird);
-      });
+      html += '<a href="section.html?id=' + esc(section.id) + '" class="section-card-link">';
+      html += '<div class="section-card-item">';
+      html += '<div class="section-card-info">';
+      html += '<div class="section-card-name">' + esc(section.name) + '</div>';
+      html += '<div class="section-card-count">' + count + ' ' + pluralize(count) + '</div>';
       html += '</div>';
-
+      html += '<span class="section-card-arrow">' + ARROW + '</span>';
       html += '</div>';
+      html += '</a>';
     });
 
     CONTENT_EL.innerHTML = html;
-
-    // Accordion toggle
-    CONTENT_EL.addEventListener('click', function (e) {
-      var btn = e.target.closest('.section-toggle');
-      if (!btn) return;
-      var section = btn.closest('.catalog-section');
-      if (section.classList.contains('direct-link')) return;
-      section.classList.toggle('open');
-    });
   }
 
   function init() {
