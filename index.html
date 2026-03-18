@@ -56,15 +56,34 @@
 (function() {
   var v = document.querySelector('.video-bg');
   if (!v) return;
+
+  // Ensure muted attribute is set (required for autoplay on iOS)
   v.muted = true;
-  var tryPlay = function() {
+  v.setAttribute('muted', '');
+  v.setAttribute('playsinline', '');
+  v.setAttribute('webkit-playsinline', '');
+
+  function tryPlay() {
+    if (!v.paused) return;
     var p = v.play();
     if (p && p.catch) p.catch(function() {});
-  };
+  }
+
+  // Try immediately
   tryPlay();
-  document.addEventListener('touchstart', tryPlay, { once: true });
-  document.addEventListener('click', tryPlay, { once: true });
-  document.addEventListener('scroll', tryPlay, { once: true });
+
+  // Retry after a short delay (some browsers need DOM to settle)
+  setTimeout(tryPlay, 300);
+  setTimeout(tryPlay, 1000);
+
+  // Fallback: play on first user interaction
+  ['touchstart', 'click', 'scroll'].forEach(function(evt) {
+    document.addEventListener(evt, tryPlay, { once: true, passive: true });
+  });
+
+  // Also try when video data is loaded
+  v.addEventListener('loadeddata', tryPlay);
+  v.addEventListener('canplay', tryPlay);
 })();
 </script>
 </body>
