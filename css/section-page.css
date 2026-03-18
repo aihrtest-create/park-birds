@@ -48,7 +48,7 @@
   align-items: center;
   gap: 6px;
   color: rgba(255,255,255,0.95);
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 15px;
   font-weight: 700;
   padding: 10px 18px 10px 12px;
@@ -73,7 +73,7 @@
 .section-hero h1 {
   position: relative;
   z-index: 2;
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 22px;
   font-weight: 900;
   color: #FFFFFF;
@@ -175,21 +175,4 @@
   line-height: 1.6;
 }
 
-/* ---- FOOTER ---- */
-.section-footer {
-  text-align: center;
-  padding: 8px 24px 32px;
-}
-
-.section-footer .footer-logo {
-  font-family: 'Comfortaa', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--green-700);
-  margin-bottom: 4px;
-}
-
-.section-footer .footer-city {
-  font-size: 12px;
-  color: var(--text-light);
-}
+/* Footer — uses shared .page-footer-logo */

@@ -90,6 +90,9 @@
 
     html += '</div>';
 
+    // Footer logo
+    html += '<div class="page-footer-logo"><img src="images/logo-color.png" alt="Сказка — Парк Развлечений"></div>';
+
     PAGE_EL.innerHTML = html;
   }
 

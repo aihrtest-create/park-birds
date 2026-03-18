@@ -48,7 +48,7 @@
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Rubik', sans-serif;
   color: var(--text-dark);
   background: var(--bg-page);
   -webkit-font-smoothing: antialiased;
@@ -56,7 +56,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 img {
@@ -79,7 +79,7 @@ a {
 
 /* Section heading */
 .section-heading {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: var(--green-800);
@@ -208,7 +208,7 @@ a {
   padding: 10px 8px;
   text-decoration: none;
   color: rgba(255,255,255,0.5);
-  font-family: 'Comfortaa', sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.3px;
@@ -232,4 +232,18 @@ a {
   width: 20px;
   height: 20px;
   stroke-width: 2.2;
+}
+
+/* ========================================
+   Page Footer Logo — all pages
+   ======================================== */
+.page-footer-logo {
+  text-align: center;
+  padding: 24px 40px 32px;
+}
+
+.page-footer-logo img {
+  width: 120px;
+  height: auto;
+  opacity: 1;
 }
