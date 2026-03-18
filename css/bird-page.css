@@ -111,6 +111,24 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Hero photo shimmer while loading */
+.photo-inner.photo-loading {
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.08) 100%);
+  background-size: 200% 200%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.photo-inner.photo-loading img {
+  opacity: 0;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
 }
 
 /* Sparkles */
@@ -362,7 +380,24 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.4s ease;
+  opacity: 1;
+}
+
+/* Gallery item shimmer while loading */
+.gallery-item.gallery-loading {
+  background: linear-gradient(135deg, var(--green-100) 0%, var(--green-50) 50%, var(--green-100) 100%);
+  background-size: 200% 200%;
+  animation: shimmerGallery 1.5s ease-in-out infinite;
+}
+
+.gallery-item.gallery-loading img {
+  opacity: 0;
+}
+
+@keyframes shimmerGallery {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
 }
 
 .gallery-item:active img {

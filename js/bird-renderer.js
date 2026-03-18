@@ -111,9 +111,10 @@
     // Photo
     html += '<div class="photo-area">';
     html += '<div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div>';
-    html += '<div class="photo-frame"><div class="photo-inner">';
+    html += '<div class="photo-frame"><div class="photo-inner photo-loading">';
     if (bird.photo) {
-      html += '<img src="images/' + esc(bird.photo) + '" alt="' + esc(bird.name_ru) + '">';
+      var photoSrc = 'images/' + esc(bird.photo).replace(/\.png$/, '.webp');
+      html += '<img src="' + photoSrc + '" alt="' + esc(bird.name_ru) + '" onload="this.parentNode.classList.remove(\'photo-loading\')" onerror="this.parentNode.classList.remove(\'photo-loading\')">';
     } else {
       html += esc(bird.emoji || '🐦');
     }
@@ -178,8 +179,8 @@
       html += '<div class="gallery-scroll">';
       for (var g = 1; g <= bird.gallery_count; g++) {
         var pad = g < 10 ? '0' + g : '' + g;
-        var src = 'images/gallery/' + esc(bird.id) + '/' + pad + '.png';
-        html += '<div class="gallery-item"><img src="' + src + '" alt="' + esc(bird.name_ru) + ' фото ' + g + '" loading="lazy"></div>';
+        var src = 'images/gallery/' + esc(bird.id) + '/' + pad + '.webp';
+        html += '<div class="gallery-item gallery-loading"><img src="' + src + '" alt="' + esc(bird.name_ru) + ' фото ' + g + '" loading="lazy" onload="this.parentNode.classList.remove(\'gallery-loading\')" onerror="this.parentNode.classList.remove(\'gallery-loading\')"></div>';
       }
       html += '</div></div>';
     }
