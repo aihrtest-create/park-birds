@@ -9,7 +9,7 @@
   min-height: 100vh;
   background: var(--bg-page);
   overflow-x: hidden;
-  padding-bottom: 90px;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
 }
@@ -17,7 +17,7 @@
 /* ---- HERO ---- */
 .bird-hero {
   background: linear-gradient(180deg, #43A047 0%, #2E7D32 60%, #1B5E20 100%);
-  padding: 20px 24px 40px;
+  padding: 20px 24px 60px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -212,7 +212,7 @@
 
 /* ---- CONTENT AREA ---- */
 .bird-content {
-  padding: 0 16px 32px;
+  padding: 0 16px 16px;
   margin-top: 16px;
 }
 
