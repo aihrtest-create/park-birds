@@ -15,8 +15,12 @@
     return d.innerHTML;
   }
 
+  // Cache version — bump when data changes to invalidate old cache
+  var CACHE_VER = 'v2';
+
   function fetchJSON(url) {
-    var cached = sessionStorage.getItem('park_' + url);
+    var key = 'park_' + CACHE_VER + '_' + url;
+    var cached = sessionStorage.getItem(key);
     if (cached) {
       return Promise.resolve(JSON.parse(cached));
     }
@@ -24,7 +28,7 @@
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     }).then(function (data) {
-      try { sessionStorage.setItem('park_' + url, JSON.stringify(data)); } catch (e) { /* ignore */ }
+      try { sessionStorage.setItem(key, JSON.stringify(data)); } catch (e) { /* ignore */ }
       return data;
     });
   }
