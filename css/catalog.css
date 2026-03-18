@@ -60,7 +60,8 @@
 .video-logo-img {
   width: 180px;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
+  margin-top: auto;
   filter: drop-shadow(0 2px 16px rgba(0,0,0,0.25));
 }
 
