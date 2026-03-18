@@ -239,11 +239,12 @@ a {
    ======================================== */
 .page-footer-logo {
   text-align: center;
-  padding: 24px 40px 32px;
+  padding: 12px 40px 16px;
+  margin-top: auto;
 }
 
 .page-footer-logo img {
-  width: 120px;
+  width: 130px;
   height: auto;
   opacity: 1;
 }

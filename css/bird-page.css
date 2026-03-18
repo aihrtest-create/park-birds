@@ -10,6 +10,8 @@
   background: var(--bg-page);
   overflow-x: hidden;
   padding-bottom: 90px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---- HERO ---- */

@@ -8,6 +8,8 @@
   min-height: 100vh;
   background: var(--bg-page);
   padding-bottom: 90px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---- VIDEO HERO ---- */
@@ -58,7 +60,7 @@
 .video-logo-img {
   width: 180px;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   filter: drop-shadow(0 2px 16px rgba(0,0,0,0.25));
 }
 
