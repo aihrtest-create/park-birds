@@ -14,7 +14,7 @@
 <div class="catalog-page">
 
   <div class="video-hero">
-    <video class="video-bg" autoplay muted loop playsinline>
+    <video class="video-bg" autoplay muted loop playsinline preload="auto">
       <source src="video/vid.mp4" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
@@ -51,5 +51,21 @@
 </nav>
 
 <script src="js/catalog.js"></script>
+<script>
+// Autoplay fallback for browsers that block autoplay
+(function() {
+  var v = document.querySelector('.video-bg');
+  if (!v) return;
+  v.muted = true;
+  var tryPlay = function() {
+    var p = v.play();
+    if (p && p.catch) p.catch(function() {});
+  };
+  tryPlay();
+  document.addEventListener('touchstart', tryPlay, { once: true });
+  document.addEventListener('click', tryPlay, { once: true });
+  document.addEventListener('scroll', tryPlay, { once: true });
+})();
+</script>
 </body>
 </html>
