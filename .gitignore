@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+*.docx
+.claude/
+package-lock.json
+# You might want to keep package.json for info, but the action doesn't use it.
