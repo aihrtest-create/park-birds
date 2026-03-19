@@ -1,6 +1,22 @@
-node_modules/
+# System files
 .DS_Store
-*.docx
-.claude/
+
+# Source materials (not part of the live site)
+Птицы ПНГ/
+Птицы Авиариума.docx
+Vid.mp4
+Skazka_Logotype_PNG-01.png
+Skazka_Logotype_PNG-08.png
+
+# Build tools (not needed for static site)
+node_modules/
+package.json
 package-lock.json
-# You might want to keep package.json for info, but the action doesn't use it.
+create_doc.js
+
+# Old prototypes
+park-skazka-birds.html
+sign-ostrich.html
+
+# IDE / AI
+.claude/
